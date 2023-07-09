@@ -12,8 +12,7 @@ export default function SkillList() {
     //API calling 
     useEffect(() => {
         const setData = async () => {
-            const skillManager = new SkillManager()
-            const res = await skillManager.getAll()
+            const res = await SkillManager.getAll()
         }
         setData()
     }, [snap.skill])

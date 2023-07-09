@@ -8,8 +8,7 @@ export default function SubmitButton() {
     const snap = useSnapshot(state)
 
     const submitSkill=async()=>{
-        const skillManager = new SkillManager()
-        const res = await skillManager.insertSkill(snap.skill)
+        const res = await SkillManager.insertSkill(snap.skill)
     }
 
     return (
