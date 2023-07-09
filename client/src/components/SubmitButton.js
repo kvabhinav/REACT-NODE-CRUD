@@ -1,20 +1,15 @@
 import { useSnapshot } from "valtio"
 import state from "../state"
 
+import SkillManager from "../api/SkillManager"
+
 export default function SubmitButton() {
 
     const snap = useSnapshot(state)
 
-    //API call for submitting skill
-    const submitSkill = async () => {
-        const res = await fetch("http://localhost:8000/", {
-            method: "POST",
-            body: JSON.stringify({ data: snap.skill }),
-            headers: {
-                "content-Type": "application/json",
-            }
-        })
-        state.skill=''
+    const submitSkill=async()=>{
+        const skillManager = new SkillManager()
+        const res = await skillManager.insertSkill(snap.skill)
     }
 
     return (

@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import state from '../state'
 import { useSnapshot } from 'valtio'
 
+import SkillManager from '../api/SkillManager'
+
 
 export default function SkillList() {
 
@@ -10,9 +12,8 @@ export default function SkillList() {
     //API calling 
     useEffect(() => {
         const setData = async () => {
-            const res = await fetch("http://localhost:8000/")
-            const data = await res.json()
-            state.skills=data
+            const skillManager = new SkillManager()
+            const res = await skillManager.getAll()
         }
         setData()
     }, [snap.skill])
